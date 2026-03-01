@@ -19,7 +19,7 @@ userRouter.post('/register',async (req,res)=>{
         }else{
             const {name, email, password, address} = req.body
             const hashedPassword = await hash(password, 10)
-            await pool.execute('insert into users(user_name, user_email, user_password,delivary_address) values(?,?,?,?)',[name,email, hashedPassword, address])
+            await pool.execute('insert into users(user_name, user_email, user_password,user_delivery_address) values(?,?,?,?)',[name,email, hashedPassword, address])
             return res.sendStatus(201)    
         }
     } catch (error) {
